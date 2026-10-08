@@ -1,40 +1,18 @@
-# Nx Next.js Template
+# Learn Nx Monorepo + Next.js
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+Personal learning project for exploring an Nx monorepo with a Next.js app.
 
-A production-ready monorepo starter for teams who want App Router, shared UI libraries, and Nx superpowers without the setup tax.
+## Common commands
 
-## Finish your Nx platform setup
-
-🚀 [Finish setting up your workspace](https://cloud.nx.app/connect/xvISK57vCb) to get faster builds with remote caching, distributed task execution, and self-healing CI. [Learn more about Nx Cloud](https://nx.dev/ci/intro/why-nx-cloud).
-
-## Quick Start
-
-### Create a new workspace from this template
-
-```sh
-npx create-nx-workspace@latest my-workspace --template nrwl/nextjs-template
-```
-
-### Or clone and run locally
-
-```sh
-git clone https://github.com/nrwl/nextjs-template.git my-workspace
-cd my-workspace
-npm install
-```
-
-### Common commands
-
-| Task               | Command                                   |
-| ------------------ | ----------------------------------------- |
-| Start dev server   | `npx nx run @nextjs-template/web:dev`     |
-| Build all projects | `npx nx run-many -t build`                |
-| Run all tests      | `npx nx run-many -t test`                 |
-| Run affected tests | `npx nx affected -t test`                 |
-| Lint affected      | `npx nx affected -t lint`                 |
-| View project graph | `npx nx graph`                            |
-| E2E tests          | `npx nx run @nextjs-template/web-e2e:e2e` |
+| Task               | Command                         |
+| ------------------ | ------------------------------- |
+| Start dev server   | `npx nx run @learn/web:dev`     |
+| Build all projects | `npx nx run-many -t build`      |
+| Run all tests      | `npx nx run-many -t test`       |
+| Run affected tests | `npx nx affected -t test`       |
+| Lint affected      | `npx nx affected -t lint`       |
+| View project graph | `npx nx graph`                  |
+| E2E tests          | `npx nx run @learn/web-e2e:e2e` |
 
 ---
 
@@ -43,7 +21,8 @@ npm install
 ```
 nextjs-template/
 - apps/
-  - web/          Next.js 16 App Router application (scope:web)
+  - food/         Next.js app from learn path
+  - web/          Next.js App Router application (scope:web)
   - web-e2e/      Playwright end-to-end tests
 - packages/
   - ui/           Shared React component library (scope:shared)
@@ -67,8 +46,8 @@ nextjs-template/
 Every task result is cached locally. Running `npx nx run @nextjs-template/web:build` a second time takes milliseconds.
 
 ```sh
-npx nx run @nextjs-template/web:build        # first run: compiles
-npx nx run @nextjs-template/web:build        # second run: instant (cache hit)
+npx nx run @learn/web:build        # first run: compiles
+npx nx run @learn/web:build        # second run: instant (cache hit)
 ```
 
 ### Affected commands
@@ -111,29 +90,6 @@ npx nx g @nx/react:lib packages/utils --bundler=none
 npx nx g @nx/react:component packages/ui/src/lib/button
 ```
 
----
-
-## Nx Cloud
-
-Nx Cloud extends local caching to your entire team and CI pipeline.
-
-- **Remote cache** - A build on any machine is available to every other machine instantly.
-- **Distributed task execution (DTE)** - Tasks run in parallel across many CI agents - no changes to your yaml required.
-- **Flaky task detection** - Nx Cloud tracks flaky tests and re-runs them automatically.
-- **Nx Agents** - Ephemeral CI agents that scale with your task graph.
-
-Learn more: https://nx.dev/nx-cloud
-
-Connect: https://cloud.nx.app/get-started
-
----
-
-## Install Nx Console
-
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
-
-[Install Nx Console &raquo;](https://nx.dev/docs/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
 ## 🔗 Learn More
 
 - [Nx Documentation](https://nx.dev/docs)
@@ -141,14 +97,3 @@ Nx Console is an editor extension that enriches your developer experience. It le
 - [Module Boundaries](https://nx.dev/docs/features/enforce-module-boundaries)
 - [Next.js Documentation](https://nextjs.org/docs)
 - [Playwright Testing](https://nx.dev/docs/technologies/test-tools/playwright)
-- [Nx Cloud](https://nx.dev/nx-cloud)
-
-## 💬 Community
-
-Join the Nx community:
-
-- [Discord](https://go.nx.dev/community)
-- [X (Twitter)](https://twitter.com/nxdevtools)
-- [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [YouTube](https://www.youtube.com/@nxdevtools)
-- [Blog](https://nx.dev/blog)

@@ -1,0 +1,16 @@
+{
+  "name": "@learn/food",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "sourceRoot": "apps/food"
+  },
+  "dependencies": {
+    "next": "~16.1.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "better-sqlite3": "^13.0.3",
+    "slugify": "^1.6.9",
+    "xss": "^1.0.15"
+  }
+}

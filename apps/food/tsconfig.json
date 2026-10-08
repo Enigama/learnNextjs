@@ -17,20 +17,19 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./*"]
     },
-    "types": ["jest", "node"],
     "outDir": "dist",
-    "rootDir": "src",
-    "tsBuildInfoFile": "dist/tsconfig.tsbuildinfo"
+    "rootDir": "."
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.js",
-    "src/**/*.jsx",
-    "../../apps/web/.next/types/**/*.ts",
-    "../../dist/apps/web/.next/types/**/*.ts",
+    "app/**/*.ts",
+    "app/**/*.tsx",
+    "app/**/*.js",
+    "app/**/*.jsx",
+    "../../apps/food/.next/types/**/*.ts",
+    "../../dist/apps/food/.next/types/**/*.ts",
+    "index.d.ts",
     "next-env.d.ts"
   ],
   "exclude": [
@@ -39,12 +38,11 @@
     "node_modules",
     "jest.config.ts",
     "jest.config.cts",
-    "src/**/*.spec.ts",
-    "src/**/*.test.ts",
+    "app/**/*.spec.ts",
+    "app/**/*.test.ts",
     ".next",
     "eslint.config.js",
     "eslint.config.cjs",
     "eslint.config.mjs"
-  ],
-  "references": []
+  ]
 }
