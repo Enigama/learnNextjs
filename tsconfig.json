@@ -17,6 +17,9 @@
     },
     {
       "path": "./apps/robotic"
+    },
+    {
+      "path": "./apps/configuration-cache"
     }
   ]
 }
