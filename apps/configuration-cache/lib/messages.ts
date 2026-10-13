@@ -29,4 +29,7 @@ export const getMessages = unstable_cache(
     return db.prepare<[], CreateMessage[]>('SELECT * FROM messages').all();
   }),
   ['messages'],
+  {
+    tags: ['msg'],
+  },
 );
