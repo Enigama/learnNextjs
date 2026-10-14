@@ -4,6 +4,7 @@ const nextConfig: NextConfig = {
   // Next.js options go here
   // See: https://nextjs.org/docs/app/api-reference/config/next-config-js
   images: {
+    qualities: [50, 75],
     remotePatterns: [
       {
         protocol: 'https',
