@@ -53,3 +53,4 @@ test-output
 .nx/polygraph
 
 *.db
+*.env.local
