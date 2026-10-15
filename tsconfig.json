@@ -20,6 +20,9 @@
     },
     {
       "path": "./apps/configuration-cache"
+    },
+    {
+      "path": "./apps/auth"
     }
   ]
 }

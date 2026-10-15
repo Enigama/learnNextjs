@@ -53,3 +53,4 @@ test-output
 .nx/polygraph
 
 *.db
+vitest.config.*.timestamp*
