@@ -3,6 +3,7 @@
 import { redirect } from 'next/navigation';
 import { hashUserPassword } from '../lib/hash';
 import { createUser } from '../lib/user';
+import { createSession } from '../lib/auth';
 
 export async function signup(_, formData: FormData) {
   const email = formData.get('email') as string;
@@ -24,7 +25,8 @@ export async function signup(_, formData: FormData) {
 
   const hasedPassword = hashUserPassword(password);
   try {
-    createUser(email, hasedPassword);
+    const userId = createUser(email, hasedPassword);
+    await createSession(userId);
   } catch (error) {
     //@ts-expect-error SQL error code
     if (error.code === 'SQLITE_CONSTRAINT_UNIQUE') {
@@ -34,6 +36,12 @@ export async function signup(_, formData: FormData) {
         },
       };
     }
+
+    return {
+      errors: {
+        fallback: JSON.stringify(errors.message ?? 'Something went wrong.'),
+      },
+    };
   }
   redirect('/training');
 }
