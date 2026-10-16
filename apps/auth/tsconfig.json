@@ -30,10 +30,8 @@
     "rootDir": "."
   },
   "include": [
-    "app/**/*.ts",
-    "app/**/*.tsx",
-    "app/**/*.ts",
-    "app/**/*.tsx",
+    "**/*.ts",
+    "**/*.tsx",
     "../../apps/auth/.next/types/**/*.ts",
     "../../dist/apps/auth/.next/types/**/*.ts",
     "index.d.ts",

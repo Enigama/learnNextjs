@@ -1,24 +1,21 @@
 'use server';
 
 import { redirect } from 'next/navigation';
-import { hashUserPassword } from '../lib/hash';
-import { createUser } from '../lib/user';
-import { createSession } from '../lib/auth';
+import { hashUserPassword, verifyPassword } from '@/lib/hash';
+import { createUser, getUserByEmail } from '@/lib/user';
+import { createSession } from '@/lib/auth';
+import { loginFormData } from '@/lib/loginData';
 
-export async function signup(_, formData: FormData) {
-  const email = formData.get('email') as string;
-  const password = formData.get('password') as string;
+async function authenticatePass(userId: number | bigint) {
+  await createSession(userId);
+  redirect('/training');
+}
 
-  const errors: Record<string, string> = {};
-
-  if (!email.includes('@')) {
-    errors.email = 'Please enter a valid email address.';
-  }
-
-  if (password.trim().length < 8) {
-    errors.password = 'Password must be at least 8 characters long.';
-  }
-
+export async function signup(
+  _,
+  formData: FormData,
+): Promise<{ errors: any } | undefined | void> {
+  const { email, password, errors } = loginFormData(formData);
   if (Object.keys(errors).length) {
     return { errors };
   }
@@ -26,7 +23,7 @@ export async function signup(_, formData: FormData) {
   const hasedPassword = hashUserPassword(password);
   try {
     const userId = createUser(email, hasedPassword);
-    await createSession(userId);
+    await authenticatePass(userId);
   } catch (error) {
     //@ts-expect-error SQL error code
     if (error.code === 'SQLITE_CONSTRAINT_UNIQUE') {
@@ -43,5 +40,38 @@ export async function signup(_, formData: FormData) {
       },
     };
   }
-  redirect('/training');
 }
+
+export async function login(
+  _,
+  formData: FormData,
+): Promise<{ errors: any } | undefined | void> {
+  const { email, password, errors } = loginFormData(formData);
+  if (Object.keys(errors).length) {
+    return { errors };
+  }
+
+  const existingUser = getUserByEmail(email);
+  console.log('existingUser ;', existingUser);
+
+  if (!existingUser) {
+    return {
+      errors: {
+        email: 'Could not authenticate user, please check your credentials',
+      },
+    };
+  }
+
+  const isVerifiedPassword = verifyPassword(existingUser.password, password);
+  if (!isVerifiedPassword) {
+    return {
+      errors: {
+        password: 'Invalid password',
+      },
+    };
+  }
+
+  await authenticatePass(existingUser.id);
+}
+
+// export async function logout() { }

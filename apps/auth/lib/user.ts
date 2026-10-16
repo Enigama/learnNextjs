@@ -16,3 +16,12 @@ export function createUser(email: string, password: string) {
     .run(email, password);
   return result.lastInsertRowid;
 }
+
+export function getUserByEmail(email: string) {
+  return db
+    .prepare<
+      [string],
+      { password: string } & User
+    >('SELECT * FROM users WHERE email = ?')
+    .get(email);
+}
