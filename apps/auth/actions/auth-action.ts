@@ -6,15 +6,19 @@ import { createUser, getUserByEmail } from '@/lib/user';
 import { createSession, destroySession } from '@/lib/auth';
 import { loginFormData } from '@/lib/loginData';
 
+interface ErrorAuth {
+  errors: Record<string, string>;
+}
+
 async function authenticatePass(userId: number | bigint) {
   await createSession(userId);
   redirect('/training');
 }
 
 export async function signup(
-  _,
+  _: unknown,
   formData: FormData,
-): Promise<{ errors: any } | undefined | void> {
+): Promise<ErrorAuth | undefined | void> {
   const { email, password, errors } = loginFormData(formData);
   if (Object.keys(errors).length) {
     return { errors };
@@ -43,16 +47,15 @@ export async function signup(
 }
 
 export async function login(
-  _,
+  _: unknown,
   formData: FormData,
-): Promise<{ errors: any } | undefined | void> {
+): Promise<ErrorAuth | undefined | void> {
   const { email, password, errors } = loginFormData(formData);
   if (Object.keys(errors).length) {
     return { errors };
   }
 
   const existingUser = getUserByEmail(email);
-  console.log('existingUser ;', existingUser);
 
   if (!existingUser) {
     return {
@@ -74,7 +77,11 @@ export async function login(
   await authenticatePass(existingUser.id);
 }
 
-export async function auth(mode: string, prevState, formData: FormData) {
+export async function auth(
+  mode: string,
+  prevState: unknown,
+  formData: FormData,
+) {
   if (mode === 'login') {
     return login(prevState, formData);
   }

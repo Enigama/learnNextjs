@@ -32,14 +32,11 @@ export async function verifyAuth() {
     session: null,
   });
 
-  console.log('init verify', sessionCookie);
-
   if (!sessionCookie) {
     return noData;
   }
 
   const sessionId = sessionCookie.value;
-  console.log('verify session id', sessionId);
 
   if (!sessionId) {
     return noData;
@@ -61,8 +58,6 @@ export async function verifyAuth() {
     return noData;
   }
 
-  // 2. refresh session if it's exists
-
   const dbUser = db
     .prepare<[string], User>('SELECT id, email FROM users WHERE id = ?')
     .get(dbsession.user_id);
@@ -70,7 +65,9 @@ export async function verifyAuth() {
   return { user: dbUser, session: dbsession };
 }
 
-export async function destroySession() {
+export async function destroySession(): Promise<
+  Record<string, string> | undefined | void
+> {
   const { session } = await verifyAuth();
 
   if (!session) {

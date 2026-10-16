@@ -7,6 +7,5 @@ export default async function Home({
   searchParams: Promise<{ mode: string }>;
 }) {
   const { mode = 'login' } = await searchParams;
-  console.log(mode);
   return <AuthForm mode={mode} />;
 }
