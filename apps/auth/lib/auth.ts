@@ -69,3 +69,19 @@ export async function verifyAuth() {
 
   return { user: dbUser, session: dbsession };
 }
+
+export async function destroySession() {
+  const { session } = await verifyAuth();
+
+  if (!session) {
+    return {
+      error: 'Unauthorized',
+    };
+  }
+
+  // remove session from db
+  db.prepare('DELETE FROM sessions WHERE id = ?').run(session.id);
+  // delete cookie
+  const cookieStore = await cookies();
+  cookieStore.delete(AUTH_SESSION_KEY);
+}

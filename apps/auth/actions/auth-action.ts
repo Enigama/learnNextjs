@@ -3,7 +3,7 @@
 import { redirect } from 'next/navigation';
 import { hashUserPassword, verifyPassword } from '@/lib/hash';
 import { createUser, getUserByEmail } from '@/lib/user';
-import { createSession } from '@/lib/auth';
+import { createSession, destroySession } from '@/lib/auth';
 import { loginFormData } from '@/lib/loginData';
 
 async function authenticatePass(userId: number | bigint) {
@@ -74,4 +74,14 @@ export async function login(
   await authenticatePass(existingUser.id);
 }
 
-// export async function logout() { }
+export async function auth(mode: string, prevState, formData: FormData) {
+  if (mode === 'login') {
+    return login(prevState, formData);
+  }
+  return signup(prevState, formData);
+}
+
+export async function logout() {
+  await destroySession();
+  redirect('/');
+}
