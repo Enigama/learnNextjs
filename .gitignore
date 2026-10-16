@@ -54,3 +54,4 @@ test-output
 
 *.db
 vitest.config.*.timestamp*
+*.env.local
