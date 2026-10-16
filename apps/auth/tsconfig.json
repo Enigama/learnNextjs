@@ -32,8 +32,8 @@
   "include": [
     "app/**/*.ts",
     "app/**/*.tsx",
-    "app/**/*.js",
-    "app/**/*.jsx",
+    "app/**/*.ts",
+    "app/**/*.tsx",
     "../../apps/auth/.next/types/**/*.ts",
     "../../dist/apps/auth/.next/types/**/*.ts",
     "index.d.ts",
