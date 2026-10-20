@@ -22,6 +22,9 @@
       "path": "./apps/configuration-cache"
     },
     {
+      "path": "./apps/auth"
+    },
+    {
       "path": "./apps/form"
     }
   ]
