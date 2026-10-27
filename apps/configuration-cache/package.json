@@ -5,6 +5,9 @@
   "nx": {
     "sourceRoot": "apps/configuration-cache"
   },
+  "scripts": {
+    "typecheck": "next typegen && tsc --noEmit"
+  },
   "dependencies": {
     "better-sqlite3": "^13.0.3",
     "next": "~16.1.6",
