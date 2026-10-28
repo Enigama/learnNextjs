@@ -26,7 +26,9 @@ export function addMessage(message: string) {
 export const getMessages = unstable_cache(
   cache(() => {
     console.log('Fetching messages from db');
-    return db.prepare<[], CreateMessage[]>('SELECT * FROM messages').all();
+    return new Promise((r) =>
+      r(db.prepare<[], CreateMessage[]>('SELECT * FROM messages').all()),
+    );
   }),
   ['messages'],
   {
