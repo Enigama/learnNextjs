@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Posts from '@/components/posts';
 import { getPosts } from '@/lib/posts';
 
-export const generateMetadata = async (data): Promise<Metadata> => {
+export const generateMetadata = async (data: unknown): Promise<Metadata> => {
   console.log('Metadata', data);
   const posts = await getPosts();
   const counts = posts.length;

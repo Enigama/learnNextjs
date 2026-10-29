@@ -2,7 +2,9 @@
   "name": "@learn",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "typecheck": "nx run-many --target=typecheck --all"
+  },
   "private": true,
   "dependencies": {
     "next": "~16.1.6",

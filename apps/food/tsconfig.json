@@ -6,7 +6,11 @@
     "emitDeclarationOnly": false,
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
@@ -17,16 +21,18 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": [
+        "./*"
+      ]
     },
     "outDir": "dist",
     "rootDir": "."
   },
   "include": [
-    "app/**/*.ts",
-    "app/**/*.tsx",
-    "app/**/*.js",
-    "app/**/*.jsx",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx",
     "../../apps/food/.next/types/**/*.ts",
     "../../dist/apps/food/.next/types/**/*.ts",
     "index.d.ts",
@@ -38,8 +44,8 @@
     "node_modules",
     "jest.config.ts",
     "jest.config.cts",
-    "app/**/*.spec.ts",
-    "app/**/*.test.ts",
+    "**/*.spec.ts",
+    "**/*.test.ts",
     ".next",
     "eslint.config.js",
     "eslint.config.cjs",

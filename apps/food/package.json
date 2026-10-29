@@ -5,6 +5,9 @@
   "nx": {
     "sourceRoot": "apps/food"
   },
+  "scripts": {
+    "typecheck": "next typegen && tsc --noEmit"
+  },
   "dependencies": {
     "next": "~16.1.6",
     "react": "^19.0.0",

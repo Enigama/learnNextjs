@@ -23,10 +23,10 @@
     "rootDir": "."
   },
   "include": [
-    "app/**/*.ts",
-    "app/**/*.tsx",
-    "app/**/*.js",
-    "app/**/*.jsx",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx",
     "../../apps/robotic/.next/types/**/*.ts",
     "../../dist/apps/robotic/.next/types/**/*.ts",
     "index.d.ts",

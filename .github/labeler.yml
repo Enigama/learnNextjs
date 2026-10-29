@@ -1,0 +1,15 @@
+auth:
+  - changed-files:
+      - any-glob-to-any-file: apps/auth/**
+configuration-cache:
+  - changed-files:
+      - any-glob-to-any-file: apps/configuration-cache/**
+robotic:
+  - changed-files:
+      - any-glob-to-any-file: apps/robotic/**
+food:
+  - changed-files:
+      - any-glob-to-any-file: apps/food/**
+form:
+  - changed-files:
+      - any-glob-to-any-file: apps/form/**
