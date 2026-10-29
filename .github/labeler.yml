@@ -10,3 +10,6 @@ robotic:
 food:
   - changed-files:
       - any-glob-to-any-file: apps/food/**
+form:
+  - changed-files:
+      - any-glob-to-any-file: apps/form/**
